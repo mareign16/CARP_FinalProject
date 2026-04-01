@@ -1,7 +1,12 @@
-/*
-colors:
-orange - EA9D63 (icons)
-white - EAEFEF (tiles)
-blue - A2B7C7 (tiles)
-gray - C6CACA (background)
-*/
+:root{
+    --orange: #EA9D63;
+    --white: #EAEFEF;
+    --blue: #A2B7C7;
+    --gray: #C6CACA;
+}
+
+body{
+    background-color: var(--gray);
+    background-size: cover;
+    background-position:center;
+}
