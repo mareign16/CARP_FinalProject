@@ -26,7 +26,7 @@
             <a href="#" class="nav-item" title="Reports">
                 <span class="nav-icon"></span>
             </a>
-            <a href="#" class="nav-item" title="Analytics">
+            <a href="#" class="nav-item" title="Analytics"> 
                 <span class="nav-icon"></span>
             </a>
             <a href="#" class="nav-item" title="Settings">
@@ -67,8 +67,30 @@
             <section class="dashboard-section">
                 <h2 class="section-title">Analytics</h2>
                 <section class="cards-row">
-                    <article class="card large"></article>
-                    <article class="card large"></article>
+                    <article class="card large weather-card">
+                        <div class="analytics-header">
+                            <div id="analyticsTitle" class="analytics-title"></div>
+                            <div class="analytics-control">
+                                <label for="chartType">
+                                    <select id="chartType" aria-label="Choose analytics chart type">
+                                        <option value="temperature">Temperature</option>
+                                        <option value="humidity">Humidity</option>
+                                        <option value="uv">UV Index</option>
+                                        <option value="rain">Rain Precipitation</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="analyticsChartArea" class="analytics-chart-area" aria-live="polite">
+                            <div class="analytics-chart-legend"></div>
+                            <div class="analytics-chart-view" id="analyticsChartView">
+                                Loading temperature graph...
+                            </div>
+                        </div>
+                        <div class="analytics-scrollbar" id="analyticsScrollbar">
+                            <div class="analytics-scroll-content" id="analyticsScrollContent"></div>
+                        </div>
+                    </article>
                 </section>
             </section>
 
