@@ -150,7 +150,11 @@ function renderAnalyticsChart(type) {
   const min = Math.min(...data);
   const max = Math.max(...data);
   const range = max - min || 1;
-
+  const styles = getComputedStyle(document.documentElement);
+  const accent = styles.getPropertyValue('--color-primary').trim() || '#EA9D63';
+  const secondary = styles.getPropertyValue('--color-secondary').trim() || '#4a6b7f';
+  const muted = styles.getPropertyValue('--color-muted').trim() || '#6b7f8f';
+  const borderColor = styles.getPropertyValue('--color-border').trim() || '#e5e7eb';
   const chartHeight = 220;
   const leftPadding = 40;
   const rightPadding = 20;
@@ -173,7 +177,7 @@ function renderAnalyticsChart(type) {
     .map((value, idx) => {
       const x = leftPadding + (drawWidth / (data.length - 1)) * idx;
       const y = topPadding + drawHeight - ((value - min) / range) * drawHeight;
-      return `<circle cx="${x}" cy="${y}" r="4" fill="#4a6b7f"><title>${value} ${ANALYTICS_DATA[type].unit}</title></circle>`;
+      return `<circle cx="${x}" cy="${y}" r="4" fill="${secondary}"><title>${value} ${ANALYTICS_DATA[type].unit}</title></circle>`;
     })
     .join('');
 
@@ -182,7 +186,7 @@ function renderAnalyticsChart(type) {
   const xAxisLabels = CHART_LABELS
     .map((label, idx) => {
       const x = leftPadding + (drawWidth / (CHART_LABELS.length - 1)) * idx;
-      return `<text x="${x}" y="${chartHeight - 8}" text-anchor="middle" font-size="11" fill="#6b7f8f">${label}</text>`;
+      return `<text x="${x}" y="${chartHeight - 8}" text-anchor="middle" font-size="11" fill="${muted}">${label}</text>`;
     })
     .join('');
 
@@ -196,15 +200,15 @@ function renderAnalyticsChart(type) {
     <svg width="${chartWidth}" height="${chartHeight}" viewBox="0 0 ${chartWidth} ${chartHeight}" preserveAspectRatio="none" aria-label="${type} analytics chart">
       <defs>
         <linearGradient id="analyticsGradient" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#EA9D63" stop-opacity="0.35" />
-          <stop offset="100%" stop-color="#EA9D63" stop-opacity="0.08" />
+          <stop offset="0%" stop-color="${accent}" stop-opacity="0.35" />
+          <stop offset="100%" stop-color="${accent}" stop-opacity="0.08" />
         </linearGradient>
       </defs>
-      <g stroke="#e5e7eb" stroke-width="1">
+      <g stroke="${borderColor}" stroke-width="1">
         ${gridSvgLines}
       </g>
       <g class="y-axis-labels">${yAxisLabels}</g>
-      <polyline points="${points}" fill="url(#analyticsGradient)" stroke="#4a6b7f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      <polyline points="${points}" fill="url(#analyticsGradient)" stroke="${secondary}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
       ${pointCircles}
       <g class="x-axis-labels">${xAxisLabels}</g>
     </svg>
