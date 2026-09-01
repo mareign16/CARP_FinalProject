@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>CARP Dashboard</title>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <section class="navbar-brand">
+            <h2 class="brand-text">CARP</h2>
+        </section>
+        
+        <section class="navbar-search">
+            <input type="text" class="search-input" placeholder="Search..." aria-label="Search">
+        </section>
+        
+        <section class="navbar-menu">
+            <a href="#" class="nav-item active" title="Dashboard">
+                <span class="nav-icon"></span>
+            </a>
+            <a href="#" class="nav-item" title="Reports">
+                <span class="nav-icon"></span>
+            </a>
+            <a href="#" class="nav-item" title="Analytics"> 
+                <span class="nav-icon"></span>
+            </a>
+            <a href="#" class="nav-item" title="Settings">
+                <span class="nav-icon"></span>
+            </a>
+        </section>
+    </nav>
+
+    <!-- Main Dashboard Container -->
+    <section class="dashboard-container">
+
+        <!-- PAGE HEADER -->
+        <header class="content-header">
+            <section class="header-content">
+                <h1 class="page-title">TIME</h1>
+                <p class="page-subtitle">Daily Update</p>
+            </section>
+            <section class="header-status">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Night Mode" aria-label="Theme Toggle">
+                    <span class="toggle-track"></span>
+                    <span class="toggle-thumb"></span>
+                </button>
+            </section>
+        </header>
+
+        <!-- DASHBOARD CONTENT -->
+        <section class="content-grid">
+
+            <!-- OVERVIEW SECTION -->
+            <section class="dashboard-section overview-section">
+                <h2 class="section-title">Overview</h2>
+                <section class="cards-container">
+                    <section class="cards-row scrollable" id="scrollableCards"></section>
+                </section>
+            </section>
+
+            <!-- ANALYTICS SECTION -->
+            <section class="dashboard-section">
+                <h2 class="section-title">Analytics</h2>
+                <section class="cards-row">
+                    <article class="card large weather-card">
+                        <div class="analytics-header">
+                            <div id="analyticsTitle" class="analytics-title"></div>
+                            <div class="analytics-control">
+                                <label for="chartType">
+                                    <select id="chartType" aria-label="Choose analytics chart type">
+                                        <option value="temperature">Temperature</option>
+                                        <option value="humidity">Humidity</option>
+                                        <option value="uv">UV Index</option>
+                                        <option value="rain">Rain Precipitation</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="analyticsChartArea" class="analytics-chart-area" aria-live="polite">
+                            <div class="analytics-chart-legend"></div>
+                            <div class="analytics-chart-view" id="analyticsChartView">
+                                Loading temperature graph...
+                            </div>
+                        </div>
+                        <div class="analytics-scrollbar" id="analyticsScrollbar">
+                            <div class="analytics-scroll-content" id="analyticsScrollContent"></div>
+                        </div>
+                    </article>
+                </section>
+            </section>
+
+            <!-- DETAILS SECTION -->
+            <section class="dashboard-section">
+                <h2 class="section-title">Details</h2>
+                <section class="cards-row">
+                    <article class="card large"></article>
+                </section>
+            </section>
+
+        </section>
+
+    </section>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
